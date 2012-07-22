@@ -15,6 +15,7 @@ namespace DiceRoller.Rollers
             MaxValue = die.MinValue;
             MinValue = die.MaxValue;
         }
+        public BestOf(){}
 
         public int Roll()
         {

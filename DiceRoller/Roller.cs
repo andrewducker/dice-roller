@@ -5,6 +5,17 @@ namespace DiceRoller
 {
     class Roller
     {
+        public static Results Roll(int iterations, params IRollable[] toAdd)
+        {
+            var roller = new Roller();
+            foreach (var rollable in toAdd)
+            {
+                roller.AddRollable(rollable);
+            }
+            return roller.Roll(iterations);
+        }
+
+
         private readonly List<IRollable> rollables = new List<IRollable>();
         private int maxValue = int.MinValue;
         private int minValue = int.MaxValue;

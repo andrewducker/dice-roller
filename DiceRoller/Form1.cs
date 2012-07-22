@@ -13,9 +13,7 @@ namespace DiceRoller
 
         private void BtnRollClick(object sender, EventArgs e)
         {
-            var roller = new Roller();
-            roller.AddRollable(new BestOf((Die)20,2));
-            var results = roller.Roll(1000000);
+            var results = Roller.Roll(100000,new BestOf(new RollAndAdd(6,6,6), 2));
             txtResults.Text = string.Empty;
             for (var i = results.MinValue; i <= results.MaxValue; i++)
             {
