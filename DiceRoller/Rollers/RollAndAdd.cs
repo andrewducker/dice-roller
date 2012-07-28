@@ -1,30 +1,39 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DiceRoller.Rollers
 {
-    class RollAndAdd : IRollable
+    static class Sum
     {
-        readonly List<IRollable> rollables = new List<IRollable>();
-        public RollAndAdd(params int[] maxValues)
+        public static IRollable Of(IEnumerable<IRollable> rollables)
         {
-            MaxValue = 0;
-            MinValue = 0;
-            foreach (var value in maxValues)
+            return new SumOf(rollables);
+        }
+        class SumOf : IRollable
+        {
+            readonly IEnumerable<IRollable> rollables;
+            public SumOf(IEnumerable<IRollable> rollables)
             {
-                MaxValue += value;
-                MinValue++;
-                rollables.Add((Die)value);
+                this.rollables = rollables;
+                MaxValue = 0;
+                MinValue = 0;
+                foreach (var die in rollables)
+                {
+                    MaxValue += die.MaxValue;
+                    MinValue += die.MinValue;
+                }
             }
+
+            public int Roll()
+            {
+                return rollables.Sum(rollable => rollable.Roll());
+            }
+
+            public int MaxValue { get; private set; }
+
+            public int MinValue { get; private set; }
         }
-
-        public int Roll()
-        {
-            return rollables.Sum(rollable => rollable.Roll());
-        }
-
-        public int MaxValue { get; private set; }
-
-        public int MinValue { get; private set; }
     }
+
 }

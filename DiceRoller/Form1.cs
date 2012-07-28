@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DiceRoller.Counts;
 using DiceRoller.Rollers;
 
 namespace DiceRoller
@@ -13,7 +14,7 @@ namespace DiceRoller
 
         private void BtnRollClick(object sender, EventArgs e)
         {
-            var results = Roller.Roll(100000,new BestOf(new RollAndAdd(6,6,6), 2));
+            var results = Best.Of(Three.D(6)).Roll(10000);
             txtResults.Text = string.Empty;
             for (var i = results.MinValue; i <= results.MaxValue; i++)
             {

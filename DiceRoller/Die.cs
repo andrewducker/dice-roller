@@ -38,5 +38,11 @@ namespace DiceRoller
         {
             return new Die(maxValue);
         }
+
+        public static implicit operator List<IRollable>(Die singleton)
+        {
+            return new List<IRollable> {singleton};
+        }
+
     }
 }

@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Rollers\BestOf.cs" />
+    <Compile Include="Counts\One.cs" />
+    <Compile Include="Counts\Three.cs" />
+    <Compile Include="Counts\Two.cs" />
+    <Compile Include="Rollers\Best.cs" />
     <Compile Include="Die.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -54,7 +57,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rollers\WorstOf.cs" />
+    <Compile Include="Rollers\Worst.cs" />
     <Compile Include="Rollers\IRollable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
